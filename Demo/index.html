@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <link rel="stylesheet" href="./index.css" type="text/css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="blog-posts-events-demo">
+    <div v-bind:style="{ fontSize: postFontSize + 'em' }">
+      <blog-post
+        v-for="post in posts"
+        v-bind:key="post.id"
+        v-bind:post="post"
+        v-on:enlarge-text="enrichFontSize">
+      </blog-post>
+    </div>
+  </div>
+
+  <div id='app'>
+    <custom-input v-model="searchText"></custom-input>
+    <p>searchText is: {{ searchText }}</p> 
+  </div>
+
+  <div id="demo">
+    <button v-on:click="show = !show">
+      Toggle
+    </button>
+    <transition name="fade">
+      <p v-if="show">hello</p>
+    </transition>
+  </div>
+
+  <div id="example-2">
+    <button @click="show = !show">Toggle show</button>
+    <transition name="bounce">
+      <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+    </transition>
+  </div>
+  
+</body>
+<script src="./index.js"></script>
+
+</html>
